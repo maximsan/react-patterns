@@ -11,7 +11,7 @@ const Toggle = ({onToggle, children}) => {
   };
 
   return React.Children.map(children, child => 
-    React.cloneElement(child, {on, toggle}));
+    React.cloneElement(child, {on, toggle}, null));
 };
 
 Toggle.On = ({on, children}) => <>{on ? children : null}</>;
