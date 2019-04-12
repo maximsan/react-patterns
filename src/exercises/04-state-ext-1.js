@@ -32,14 +32,15 @@ function Usage({
 }) {
   return (
     <Toggle onToggle={onToggle}>
-      {({on, toggle}) => (
+      {({on, toggle, toggleProps}) => (
         <div>
           {on ? 'The button is on' : 'The button is off'}
-          <Switch on={on} onClick={toggle} />
+          <Switch on={on} {...toggleProps} />
           <hr />
-          <button aria-label="custom-button" onClick={toggle}>
+          <button aria-label="custom-button" {...toggleProps}>
             {on ? 'on' : 'off'}
           </button>
+          <button onClick={toggle}>{on ? 'on' : 'off'}</button>
         </div>
       )}
     </Toggle>

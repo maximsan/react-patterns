@@ -43,20 +43,6 @@ function Usage({
   onToggle = (...args) => console.log('onToggle', ...args),
 }) {
   return <CommonToggle color="red" onToggle={onToggle} />;
-  //   return (
-  //     <Toggle onToggle={onToggle}>
-  //       {({on, toggle}) => (
-  //         <div>
-  //           {on ? 'The button is on' : 'The button is off'}
-  //           <Switch on={on} onClick={toggle} />
-  //           <hr />
-  //           <button aria-label="custom-button" onClick={toggle}>
-  //             {on ? 'on' : 'off'}
-  //           </button>
-  //         </div>
-  //       )}
-  //     </Toggle>
-  //   );
 }
 Usage.title = 'Render Props';
 
