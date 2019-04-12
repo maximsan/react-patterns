@@ -25,8 +25,8 @@ class Toggle extends React.Component {
 function CommonToggle(props) {
   return (
     <Toggle {...props}>
-      {({on, toggle}) => (
-        <div style={{backgroundColor: `${props.color}`}}>
+      {({on, toggle, color}) => (
+        <div style={{backgroundColor: `${color}`}}>
           {on ? 'The button is on' : 'The button is off'}
           <Switch on={on} onClick={toggle} />
           <hr />
