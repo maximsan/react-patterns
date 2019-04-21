@@ -15,7 +15,7 @@ class Toggle extends React.Component {
   initalState = {on: this.props.initialOn}
   state = this.initalState;
   reset = () => {
-      this.setState(initalState, () => {
+      this.setState(this.initalState, () => {
         this.props.onReset(this.state.on);
       });
   }

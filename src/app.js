@@ -17,12 +17,12 @@ const files = [
 ]
 
 const pages = files.reduce((p, filename, index, fullArray) => {
-  const final = require(`./exercises-final/${filename}`)
-  Object.assign(final, {
-    previous: fullArray[index - 1],
-    next: fullArray[index + 1],
-    isolatedPath: `/isolated/exercises-final/${filename}`,
-  })
+  // const final = require(`./exercises-final/${filename}`)
+  // Object.assign(final, {
+  //   previous: fullArray[index - 1],
+  //   next: fullArray[index + 1],
+  //   isolatedPath: `/isolated/exercises-final/${filename}`,
+  // })
   const exercise = require(`./exercises/${filename}`)
   Object.assign(exercise, {
     previous: fullArray[index - 1],
@@ -31,8 +31,8 @@ const pages = files.reduce((p, filename, index, fullArray) => {
   })
   p[filename] = {
     exercise,
-    final,
-    title: final.default.title,
+    //final,
+    //title: final.default.title,
   }
   return p
 }, {})
@@ -247,9 +247,9 @@ function NotFound() {
 const IsolatedExercise = ({moduleName}) => (
   <Isolated loader={() => import(`./exercises/${moduleName}`)} />
 )
-const IsolatedFinal = ({moduleName}) => (
-  <Isolated loader={() => import(`./exercises-final/${moduleName}`)} />
-)
+// const IsolatedFinal = ({moduleName}) => (
+//   <Isolated loader={() => import(`./exercises-final/${moduleName}`)} />
+// )
 
 const FakeApp = () => <div>{`Welcome to our fake app ;-)`}</div>
 
@@ -263,7 +263,7 @@ function App() {
         <FullPage path="/:exerciseId/exercise" type="exercise" />
         <FullPage path="/:exerciseId/final" type="final" />
         <IsolatedExercise path="/isolated/exercises/:moduleName" />
-        <IsolatedFinal path="/isolated/exercises-final/:moduleName" />
+        {/* <IsolatedFinal path="/isolated/exercises-final/:moduleName" /> */}
         <NotFound default />
       </Router>
     </React.Suspense>

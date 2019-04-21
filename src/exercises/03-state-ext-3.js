@@ -5,15 +5,15 @@ import {Switch} from '../switch';
 
 const ToggleContext = React.createContext();
 
-const ToggleConsumer = props => {
-    <ToggleContext.Consumer>
-        {context => {
-            if(!context)
-                throw new Error(`Toggle should be within the toggle context`);
-            return props.children(context);
-        }}
-    </ToggleContext.Consumer>
-}
+const ToggleConsumer = props => (
+  <ToggleContext.Consumer>
+    {context => {
+      if (!context)
+        throw new Error(`Toggle should be within the toggle context`);
+      return props.children(context);
+    }}
+  </ToggleContext.Consumer>
+);
 
 class Toggle extends React.Component {
   static On = ({children}) => (
@@ -47,9 +47,7 @@ class Toggle extends React.Component {
 
   render() {
     return (
-      <ToggleContext.Provider
-        value={this.state}
-      >
+      <ToggleContext.Provider value={this.state}>
         {this.props.children}
       </ToggleContext.Provider>
     );

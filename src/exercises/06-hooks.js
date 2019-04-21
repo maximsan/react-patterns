@@ -3,7 +3,7 @@
 import React, {useState} from 'react';
 import {Switch} from '../switch';
 
-const noop = () => {}
+const noop = () => {};
 
 const useToggle = ({onToggle = noop} = {}) => {
   const [on, setOn] = useState(false);
@@ -20,34 +20,33 @@ const useToggle = ({onToggle = noop} = {}) => {
     ...props,
   });
 
-    return {
-      on,
-      toggle,
-      getTogglerProps,
-    };
-
+  return {
+    on,
+    toggle,
+    getTogglerProps,
+  };
 };
 
 function Usage() {
-    const {on, getTogglerProps} = useToggle({
-      onToggle: (...args) => console.log('onToggle', ...args),
-    })
-    return (
-      <div>
-        <Switch {...getTogglerProps({on})} />
-        <hr />
-        <button
-          {...getTogglerProps({
-            'aria-label': 'custom-button',
-            onClick: () => console.log('onButtonClick'),
-            id: 'custom-button-id',
-          })}
-        >
-          {on ? 'on' : 'off'}
-        </button>
-      </div>
-    )
-  }
+  const {on, getTogglerProps} = useToggle({
+    onToggle: (...args) => console.log('onToggle', ...args),
+  });
+  return (
+    <div>
+      <Switch {...getTogglerProps({on})} />
+      <hr />
+      <button
+        {...getTogglerProps({
+          'aria-label': 'custom-button',
+          onClick: () => console.log('onButtonClick'),
+          id: 'custom-button-id',
+        })}
+      >
+        {on ? 'on' : 'off'}
+      </button>
+    </div>
+  );
+}
 Usage.title = 'Prop Collections';
 
-export {Toggle, Usage as default};
+export default Usage;
