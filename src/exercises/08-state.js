@@ -6,28 +6,6 @@ import {Switch} from '../switch';
 const callAll = (...fns) => (...args) =>
   fns.forEach(fn => fn && fn(...args));
 
-// Render props allow users to be in control over the UI based
-// on state.
-// State reducers allow users to be in control over logic
-// based on actions.
-// This idea is similar to redux, but only coincidentally.
-//
-// The basic idea is that any time there's an
-// internal change in state, we
-// first call a stateReducer prop with the current state
-// and the changes.
-// Whatever is returned is what we use in our setState call.
-// This allows users of the component to return the changes
-// they received
-// or to modify the changes as they need.
-//
-// What this means for our implementation is that we can create a single
-// function that does all the work before calling setState. Then we can
-// replace all calls to setState with that function.
-//
-// Learn more about the state reducers pattern here:
-// https://blog.kentcdodds.com/b40316cfac57
-
 class Toggle extends React.Component {
   static defaultProps = {
     initialOn: false,
