@@ -1,22 +1,29 @@
 // prop getters
 
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {Switch} from '../switch';
 
 const noop = () => {};
 
 const useToggle = ({onToggle = noop} = {}) => {
   const [on, setOn] = useState(false);
-  const toggle = () => {
+
+  const toggle = useCallback(() => {
     setOn(!on);
     onToggle(!on);
-  };
-  const getTogglerProps = ({onClick, ...props}) => ({
-    'aria-pressed': on,
-    onClick: (...args) => {
+  }, [on, onToggle]);
+
+  const onHandleClick = useCallback(
+    ({onClick, ...args}) => {
       onClick && onClick(...args);
       toggle();
     },
+    [toggle],
+  );
+
+  const getTogglerProps = ({onClick, ...props}) => ({
+    'aria-pressed': on,
+    onClick: onHandleClick,
     ...props,
   });
 
