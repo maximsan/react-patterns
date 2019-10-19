@@ -1,17 +1,18 @@
 // Compound Components
 
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {Switch} from '../switch';
 
 const Toggle = ({onToggle, children}) => {
   const [on, setOn] = useState(false);
-  const toggle = () => {
+  const toggle = useCallback(() => {
     setOn(!on);
     onToggle(!on);
-  };
+  }, [on, onToggle]);
 
-  return React.Children.map(children, child => 
-    React.cloneElement(child, {on, toggle}, null));
+  return React.Children.map(children, child =>
+    React.cloneElement(child, {on, toggle}, null),
+  );
 };
 
 Toggle.On = ({on, children}) => <>{on ? children : null}</>;
