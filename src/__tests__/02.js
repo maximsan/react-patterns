@@ -1,17 +1,16 @@
-import React from 'react'
-import {renderToggle} from '../../test/utils'
-import Usage from '../exercises-final/02'
-// import Usage from '../exercises/02'
+import React from 'react';
+import {renderToggle} from '../../test/utils';
+import Usage from '../exercises/02-state';
 
 test('renders a toggle component', () => {
-  const {toggleButton, toggle, container} = renderToggle(<Usage />)
-  expect(toggleButton).toBeOff()
-  expect(container.textContent).toMatch('The button is off')
-  expect(container.textContent).not.toMatch('The button is on')
-  toggle()
-  expect(toggleButton).toBeOn()
-  expect(container.textContent).toMatch('The button is on')
-  expect(container.textContent).not.toMatch('The button is off')
+  const {toggleButton, toggle, container} = renderToggle(<Usage />);
+  expect(toggleButton).toBeOff();
+  expect(container.textContent).toMatch('The button is off');
+  expect(container.textContent).not.toMatch('The button is on');
+  toggle();
+  expect(toggleButton).toBeOn();
+  expect(container.textContent).toMatch('The button is on');
+  expect(container.textContent).not.toMatch('The button is off');
   expect(console.log.mock.calls).toMatchInlineSnapshot(`
 Array [
   Array [
@@ -19,8 +18,8 @@ Array [
     true,
   ],
 ]
-`)
-})
+`);
+});
 
 //////// Elaboration & Feedback /////////
 // When you've finished with the exercises:
@@ -32,7 +31,7 @@ Array [
 http://ws.kcd.im/?ws=react%20patterns&e=02&em=
 */
 test.skip('I submitted my elaboration and feedback', () => {
-  const submitted = false // change this when you've submitted!
-  expect(submitted).toBe(true)
-})
+  const submitted = false; // change this when you've submitted!
+  expect(submitted).toBe(true);
+});
 ////////////////////////////////

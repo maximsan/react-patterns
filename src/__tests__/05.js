@@ -1,13 +1,12 @@
-import React from 'react'
-import {renderToggle, fireEvent} from '../../test/utils'
-import Usage from '../exercises-final/05'
-// import Usage from '../exercises/05'
+import React from 'react';
+import {renderToggle, fireEvent} from '../../test/utils';
+import Usage from '../exercises/05-state';
 
 test('renders a toggle component', () => {
-  const {toggleButton, toggle} = renderToggle(<Usage />)
-  expect(toggleButton).toBeOff()
-  toggle()
-  expect(toggleButton).toBeOn()
+  const {toggleButton, toggle} = renderToggle(<Usage />);
+  expect(toggleButton).toBeOff();
+  toggle();
+  expect(toggleButton).toBeOn();
   expect(console.log.mock.calls).toMatchInlineSnapshot(`
 Array [
   Array [
@@ -15,14 +14,14 @@ Array [
     true,
   ],
 ]
-`)
-})
+`);
+});
 
 test('can also toggle with the custom button', () => {
-  const {toggleButton, getByLabelText} = renderToggle(<Usage />)
-  expect(toggleButton).toBeOff()
-  fireEvent.click(getByLabelText('custom-button'))
-  expect(toggleButton).toBeOn()
+  const {toggleButton, getByLabelText} = renderToggle(<Usage />);
+  expect(toggleButton).toBeOff();
+  fireEvent.click(getByLabelText('custom-button'));
+  expect(toggleButton).toBeOn();
   expect(console.log.mock.calls).toMatchInlineSnapshot(`
 Array [
   Array [
@@ -30,8 +29,8 @@ Array [
     true,
   ],
 ]
-`)
-})
+`);
+});
 
 //////// Elaboration & Feedback /////////
 // When you've finished with the exercises:
@@ -43,7 +42,7 @@ Array [
 http://ws.kcd.im/?ws=react%20patterns&e=05&em=
 */
 test.skip('I submitted my elaboration and feedback', () => {
-  const submitted = false // change this when you've submitted!
-  expect(submitted).toBe(true)
-})
+  const submitted = false; // change this when you've submitted!
+  expect(submitted).toBe(true);
+});
 ////////////////////////////////
